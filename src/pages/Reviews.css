@@ -1,0 +1,189 @@
+.reviews-container {
+  padding: 30px;
+  background: #f4f4f4;
+  min-height: 100vh;
+}
+
+/* Top bar */
+
+.reviews-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reviews-top-bar h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.pg-dropdown {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+
+/* Grid layout */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+
+/* Review card */
+
+.review-card {
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+/* Header */
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewer-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reviewer-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+
+/* Review text */
+
+.review-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+
+/* Stars */
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  font-size: 16px;
+}
+
+/* ================= EMPTY / LOADING TEXT ================= */
+.reviews-container p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+
+  .reviews-container {
+    padding: 16px;
+    margin-top: 14px;
+    border-radius: 14px;
+  }
+
+  .reviews-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+    padding-left: 10px;
+    border-left-width: 3px;
+  }
+
+  /* Force single column on mobile */
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .review-card {
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 0;
+  }
+
+  .review-card:hover {
+    transform: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .review-header {
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .reviewer-info h4 {
+    font-size: 14px;
+  }
+
+  .reviewer-info p {
+    font-size: 12px;
+  }
+
+  .review-text {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .stars {
+    margin-top: 6px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+
+  .reviews-container {
+    padding: 14px;
+  }
+
+  .reviews-title {
+    font-size: 17px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .review-text {
+    font-size: 12.5px;
+  }
+}

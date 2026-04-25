@@ -1,0 +1,223 @@
+.admin-users-container {
+  padding: 30px;
+  background: #f4f5f7;
+  min-height: 100vh;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.users-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.add-user-btn {
+  background: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.users-table {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 2fr;
+  background: #dcd6ff;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 2fr;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-row:hover {
+  background: #f9f9ff;
+}
+
+/* .users-search-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 15px;
+} */
+
+ 
+
+.filter-dropdown {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.no-users {
+  padding: 20px;
+  text-align: center;
+  color: gray;
+}
+
+
+.users-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  gap: 15px;
+}
+/* 
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+} */
+/* 
+.filter-select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+} */
+
+
+.users-count {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+.active-page {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal input,
+.modal select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+
+.users-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+/* .search-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+} */
+
+.filter-select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 8px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

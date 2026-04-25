@@ -1,0 +1,522 @@
+.city-page {
+  font-family: "Inter", sans-serif;
+  color: #000;
+  background: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================= Hero Section ================= */
+.city-hero {
+  position: relative;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 75px;
+}
+
+.city-overlay {
+  position: absolute;          /* 🔑 move overlay on top of image */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+
+  display: flex;               /* 🔑 center text properly */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 0 20px;             /* responsive padding */
+}
+
+
+.city-overlay h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.city-overlay p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* ================= Area + Gender Filter ================= */
+.area-gender-filter {
+  width: 100%;
+  padding: 0 8%;
+  margin: 20px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.area-gender-filter label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  margin-right: 5px;
+}
+
+/* -------- Modern Styled Dropdown -------- */
+.area-gender-filter select {
+  padding: 10px 40px 10px 15px;
+  border-radius: 12px;
+  border: 1.8px solid #d0d0d0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: #fff;
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><polygon points='0,0 14,0 7,7' style='fill:%23666'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+}
+
+.area-gender-filter select:hover {
+  border-color: #007bff;
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.1);
+}
+
+.area-gender-filter select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* -------- Option Styling (Browser-Safe Trick) -------- */
+.area-gender-filter select option {
+  background-color: #fff;
+  color: #333;
+  font-weight: 500;
+  padding: 10px;
+}
+
+/* Works in most modern browsers */
+.area-gender-filter select option:hover,
+.area-gender-filter select option:checked {
+  background-color: #f0f7ff;
+  color: #007bff;
+}
+
+/* ================= PG Grid ================= */
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+
+  /* 🔑 THIS IS THE IMPORTANT PART */
+  max-width: 1400px;
+  margin-top: -10px;        /* centers the grid */
+  padding: 30px 24px 60px; /* less space at top */
+  
+}
+
+/* ================= City Hostel Cards (Homepage Style) ================= */
+
+/* Add these styles to your existing CityHostels.css */
+
+/* ================= City PG Card (Matching Homepage) ================= */
+.city-pg-card {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 260px !important;
+  max-width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: bottom;
+  position: relative;
+  z-index: 1;
+  height: auto;
+}
+
+.city-pg-card:hover {
+  transform: translateY(-14px) !important;
+  z-index: 10;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* ================= Image ================= */
+.city-pg-image {
+  position: relative;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.city-pg-image .image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.city-pg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.city-pg-card:hover .city-pg-image img {
+  transform: scale(1.05);
+}
+
+.city-wishlist {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 22px;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s;
+}
+
+.city-wishlist:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* ================= Card Info ================= */
+.city-pg-info {
+  font-family: "Inter", sans-serif;
+  padding: 10px 14px !important;
+  gap: 4px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Name + Rating row */
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pg-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.pg-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pg-rating .star {
+  color: #f5b50a;
+  font-size: 16px;
+}
+
+.pg-location {
+  margin-top: -10px !important;
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.location-icon {
+  font-size: 16px;
+}
+
+/* PG Type Badge */
+.pg-type-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 0;
+  width: fit-content;
+   margin: 2px 0 6px 0;
+   margin-bottom: 0px;
+   margin-top: 0px;
+}
+
+.pg-type-badge svg {
+  font-size: 12px;
+}
+
+/* Sharing & Price Section */
+.sharing-price-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 1px 0;
+  border-top: 1px dashed #e0e0e0;
+  border-bottom: 1px dashed #e0e0e0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.sharing-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.sharing-text {
+  font-weight: 600;
+  color: #333;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.price {
+  color: #28a745;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.per-month {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Facilities Section */
+.facilities-section {
+  margin: 8px 0;
+  margin-top: 0px;
+  
+}
+
+
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0px;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0px;
+  /* background: #f8f9fa; */
+  border-radius: 6px;
+  font-size: 11px;
+  color: #555;
+  min-height: 10px;
+}
+
+.facility-icon {
+  color: #007bff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.facility-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ================= MOBILE VIEW ONLY ================= */
+@media (max-width: 768px) {
+
+  /* ===== Page ===== */
+  .city-page {
+    padding-top: 0;
+  }
+
+  /* ===== Hero Section ===== */
+  .city-hero {
+    height: 80vh;
+    padding-top: 90px;
+  }
+
+  .city-overlay {
+    padding: 0 14px;
+  }
+
+  .city-overlay h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .city-overlay p {
+    font-size: 0.95rem;
+    width: 350px;
+  }
+
+  /* ===== Area + Gender Filter ===== */
+  .area-gender-filter {
+    padding: 0 16px;
+    margin-top: 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .area-gender-filter label {
+    font-size: 0.9rem;
+  }
+
+  .area-gender-filter select {
+    width: 50%;
+    font-size: 14px;
+    padding: 10px 36px 10px 14px;
+  }
+
+  /* ===== PG Grid ===== */
+  .pg-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 16px 40px;
+    gap: 18px;
+    margin-top: 0;
+  }
+
+  /* ===== PG Card ===== */
+  .city-pg-card {
+    border-radius: 16px;
+  }
+
+  .city-pg-card:hover {
+    transform: none !important; /* disable lift on mobile */
+  }
+
+  /* ===== Image ===== */
+  .city-pg-image {
+    padding: 12px;
+  }
+
+  .city-pg-image .image-container {
+    height: 170px;
+  }
+
+  /* Wishlist icon */
+  .city-wishlist {
+    top: 18px;
+    right: 18px;
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  /* ===== Info Section ===== */
+  .city-pg-info {
+    padding: 10px 12px !important;
+  }
+
+  .pg-name {
+    font-size: 16px;
+  }
+
+  .pg-location {
+    font-size: 13px;
+    margin-top: -6px !important;
+  }
+
+  /* ===== Type Badge ===== */
+  .pg-type-badges {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* ===== Sharing + Price ===== */
+  .sharing-price-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+  }
+
+  .sharing-text {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  /* ===== Facilities ===== */
+  .facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    display: flex;
+  }
+
+  .facility-item {
+    font-size: 11px;
+    padding: 6px;
+  }
+}
+
+/* ===== EXTRA SMALL DEVICES ===== */
+@media (max-width: 480px) {
+
+  .city-hero {
+    height: 34vh;
+  }
+
+  .city-overlay h1 {
+    font-size: 1.7rem;
+  }
+
+  .city-overlay p {
+    font-size: 0.9rem;
+  }
+
+  .facilities-grid {
+    grid-template-columns: 1fr;
+  }
+}

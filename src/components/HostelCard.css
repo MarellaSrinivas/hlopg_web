@@ -1,0 +1,885 @@
+/* ==============================
+   Home PG Card Styles (home-pg-card.css)
+==================================*/
+
+/* -------- Base Card -------- */
+.home-pg-card {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 260px;
+  max-width: 260px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.home-pg-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  background: rgba(0,0,0,0.08);
+  filter: blur(12px);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.home-pg-card:hover::after {
+  opacity: 1;
+}
+
+.home-pg-card:hover {
+  transform: scale(1.01); /* very subtle zoom */
+  box-shadow: 
+    0 12px 24px rgba(0,0,0,0.08),
+    0 6px 6px rgba(0,0,0,0.05);
+}
+
+/* -------- Image Section -------- */
+.home-pg-card .pg-image {
+  position: relative;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.home-pg-card .pg-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.home-pg-card:hover .pg-image img {
+  transform: scale(1.02);
+}
+
+/* -------- Wishlist Icon -------- */
+.wishlists {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 5;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.wishlists:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.wishlists.liked {
+  color: red !important;
+  fill: red !important;
+}
+
+.wishlists.unliked {
+  color: white !important;
+  fill: white !important;
+}
+
+/* -------- Card Info -------- */
+.pg-details {
+  font-family: "Inter", sans-serif;
+  padding: 12px 14px 16px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pg-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.pg-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pg-rating .star {
+  color: #f5b50a;
+  font-size: 16px;
+}
+
+.pg-location {
+  font-size: 14px;
+  color: #777;
+  margin-top: -14px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* -------- Facilities -------- */
+.facility-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.facility-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  color: #444;
+}
+
+.facility-block svg {
+  font-size: 18px;
+  color: #363636;
+}
+
+/* -------- Price -------- */
+.pg-price,
+.pricecard {
+  margin-top: 2px;
+  line-height: 1.1;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.price-row .price {
+  padding-top: 22px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
+
+.price-row .per {
+  font-size: 13px;
+  color: #666;
+}
+
+/* -------- Know More Button -------- */
+.know-more {
+  margin-top: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #7556ff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.know-more:hover {
+  text-decoration: underline;
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sharing-price-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .price-tag {
+    align-items: center;
+  }
+
+  .new-pg-card {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .facilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-item {
+    justify-content: flex-start;
+  }
+
+  .new-pg-card {
+    min-height: 500px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wishlists {
+  pointer-events: auto;
+}
+
+.pg-card-click {
+  pointer-events: auto;
+}
+.know-more-btn {
+  /* background: #7556ff; */
+  font-family: "Inter", sans-serif !important;
+  color: #7556ff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500 !important;
+  transition: 0.3s;
+}
+
+.know-more-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* ================= PG CARD (Updated to Option B) ================= */
+
+.home-pg-card {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 260px !important;
+  max-width: 260px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+   /* transform-origin: bottom; */
+  position: relative;
+  z-index: 1;
+  
+}
+
+.home-pg-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  background: rgba(0,0,0,0.08);
+  filter: blur(12px);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.home-pg-card:hover::after {
+  opacity: 1;
+}
+.home-pg-card * {
+  box-sizing: border-box;
+}
+
+
+.home-pg-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.08),
+    0 6px 6px rgba(0,0,0,0.06);
+}
+
+/* ================= Image ================= */
+.home-pg-card .pg-image {
+   position: relative;
+  background: #ffffff;          /* ✅ white behind image */
+  padding: 15px;                 /* ✅ creates white frame */
+  border-radius: 20px 20px 0 0; /* matches card */
+  overflow: hidden;
+
+}
+
+.home-pg-card .pg-image img {
+  width: 100%;
+  height: 180px;
+   object-fit: cover;
+  /* transition: transform 0.5s ease; */
+  border-radius: 14px;          /* rounded image inside white */
+  display: block;
+}
+
+.home-pg-card:hover .pg-image img {
+  transform: scale(1.02);
+}
+
+.wishlists {
+   position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 5;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.wishlists:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+.wishlists.liked {
+  color: red !important;
+  fill: red !important;
+}
+
+.wishlists.unliked {
+  color: white !important;
+  fill: white !important;
+}
+
+/* ================= Card Info ================= */
+.pg-details {
+  font-family: "Inter", sans-serif;
+  padding: 10px 14px !important;
+  gap: 4px !important;
+  display: flex;
+  flex-direction: column;
+    padding: 12px 14px 16px !important; /* 👈 increase bottom */
+
+}
+
+/* Name + Rating row */
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pg-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 0px;
+}
+
+.pg-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pg-rating .star {
+  color: #f5b50a;
+  font-size: 16px;
+}
+
+.pg-location {
+  margin-left: -1px !important;
+  margin-top: -14px !important;
+  font-size: 14px;
+  color: #777;
+  gap: 0.25px !important;
+}
+
+
+
+
+.gridicons--location {
+  margin-left: 5px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f50000' d='M19 9A7 7 0 1 0 5 9c0 1.387.409 2.677 1.105 3.765h-.008L12 22l5.903-9.235h-.007A6.97 6.97 0 0 0 19 9m-7 3a3 3 0 1 1 0-6a3 3 0 0 1 0 6'/%3E%3C/svg%3E");
+}
+
+/* ================= Facilities (NEW Style) ================= */
+.facility-row {
+  margin-top: -10px !important;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.facility-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 1px; */
+  font-size: 13px;
+  color: #444;
+}
+
+.facilities-title{
+  margin-top: 0px;
+}
+
+.facility-block svg {
+  font-size: 18px;
+  color: #363636;
+}
+
+/* ================= Price Row ================= */
+
+.pg-price {
+  margin-top: 2px !important;
+  line-height: 1.1 !important;
+}
+
+.pricecard{
+    margin-top: -10px !important;
+  line-height: 1.1 !important;
+
+}
+
+.PriceNo{
+  color :#007bff;
+  font-size: 16px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.price-row .price {
+  padding-top: 22px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
+
+.price-row .per {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ================= Know More ================= */
+.know-more {
+  margin-top: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #7556ff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.know-more:hover {
+  text-decoration: underline;
+}
+
+
+
+.unliked-heart {
+  font-size: 22px;
+  color: white;
+  stroke: black;
+  stroke-width: 30;
+}
+
+.liked-heart {
+  font-size: 22px;
+  color: red;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+/* Sharing Info */
+.sharing-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.sharing-info svg {
+  color: #007bff;
+}
+
+/* Facility Icons */
+.facility-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 60px;
+}
+
+.facility-block svg {
+  font-size: 16px;
+  color: #007bff;
+}
+
+.facility-block span {
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Price Styling */
+.price {
+  font-size: 20px;
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+.per {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Card Hover Effects */
+.pg-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.pg-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.pg-image img {
+  transition: transform 0.5s ease;
+}
+
+.pg-card:hover .pg-image img {
+  transform: scale(1.1);
+}
+
+  
+
+/* Add to Home.css - New Card Styles */
+
+/* PG Type Badge */
+.pg-type-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  /* background: #e3f2fd; */
+  color: #7156fd;
+  padding: 0;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 1px 0;
+  width: fit-content;
+}
+
+.pg-type-badge svg {
+  font-size: 12px;
+}
+
+/* Sharing & Price Section */
+.sharing-price-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1px 0;
+  padding: 1px 0;
+  border-top: 1px dashed #e0e0e0;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.sharing-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.sharing-text {
+  font-weight: 600;
+  color: #333;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #7156fd;
+  margin-bottom: 2px;
+}
+
+.price {
+  color: #28a745;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.per-month {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Facilities Section */
+.facilities-section {
+  margin: 1px 0;
+  padding-top: 4px !important;
+}
+
+.facilities-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 5px;
+  /* background: #f8f9fa; */
+  border-radius: 6px;
+  font-size: 11px;
+  color: #555;
+  min-height: 10px;
+}
+
+.facility-icon {
+  color: #7156fd;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.facility-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Additional Info */
+.additional-info {
+  margin: 12px 0;
+  padding: 10px 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.description-preview {
+  background: #f8f9fa;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.desc-text {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 2; */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.full {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* View Details Button */
+.view-details-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.view-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Adjust existing card for more content */
+.new-pg-card {
+  height: auto !important;
+  min-height: 520px;
+}
+
+.new-details {
+  padding: 15px !important;
+}
+
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .sharing-price-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .price-tag {
+    align-items: center;
+  }
+  
+  .sharing-text {
+    max-width: 200px;
+  }
+  
+  .new-pg-card {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .facilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .facility-item {
+    justify-content: flex-start;
+  }
+  
+  .new-pg-card {
+    min-height: 500px;
+  }
+}
+
+
+ 
+.blurred {
+  filter: blur(6px);
+  opacity: 0.7;
+}
+
+
+
+/* 🟣 Co-living */
+.pg-type-badge.co-living {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+/* 🔵 Men's PG */
+.pg-type-badge.mens {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+/* 🌸 Female PG */
+.pg-type-badge.female {
+  background: #ffe4e6;
+  color: #db2777;
+}

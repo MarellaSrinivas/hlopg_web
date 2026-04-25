@@ -1,0 +1,713 @@
+/* ================= Header Container ================= */
+.header {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  z-index: 1000;
+  box-sizing: border-box;
+  transition: all 0.4s ease-in-out;
+  background-color: #faf7f7;
+  border-radius: 40px;
+}
+
+/* ================= Home Page Animation ================= */
+.header.home-animation {
+  transform: translateX(-50%) translateY(-50px);
+  opacity: 0;
+  animation: slideDownFade 0.8s forwards;
+}
+
+@keyframes slideDownFade {
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ================= Scrolled State ================= */
+.header.scrolled {
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50px;
+  width: 85%;
+  height: 55px;
+  padding: 0 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= Brand ================= */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  height: 100%;
+  z-index: 1001;
+}
+
+.logo {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease, width 0.3s ease;
+  display: block;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.header.scrolled .logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* ================= Search Bar ================= */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: rgba(211, 160, 160, 0.15);
+  padding: 8px 16px;
+  border-radius: 30px;
+  gap: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(117, 86, 255, 0.4);
+  transform: scale(1.02);
+}
+
+.header.scrolled .search-container {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 6px 14px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.search-icon {
+  color: #7556ff;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  color: #1a1818;
+  width: 200px;
+  padding: 8px 12px;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-input::placeholder {
+  color: rgb(20, 20, 20);
+}
+
+.header.scrolled .search-input {
+  color: #000000;
+}
+
+.header.scrolled .search-input::placeholder {
+  color: #555;
+}
+
+.search-btn {
+  background: #f3eeee;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #7556ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.header.scrolled .search-btn {
+  background: #7556ff;
+  color: #ffffff;
+}
+
+.header.scrolled .search-btn:hover {
+  background: #5d43cc;
+}
+
+/* ================= Suggestions Dropdown ================= */
+.suggestions-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1002;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions-dropdown li {
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #000000;
+  transition: background 0.2s ease;
+}
+
+.suggestions-dropdown li:hover {
+  background: #7556ff;
+  color: #fff;
+}
+
+/* ================= Navigation ================= */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: rgb(14, 13, 13);
+  font-size: 17px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav ul li a:hover {
+  color: #5d43cc;
+}
+
+.header.scrolled .nav ul li a {
+  color: #000000;
+}
+
+/* ================= Auth Section ================= */
+.auth-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+
+.login-btn {
+  font-weight: 600 !important;
+  padding: 10px 25px !important;
+  border-radius: 25px !important;
+  background: #7556ff !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  white-space: nowrap !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  font-family: "Inter", sans-serif !important;
+  margin-right: 20px !important;
+}
+
+.login-btn:hover {
+  background: #5d43cc !important;
+  transform: scale(1.05) !important;
+}
+
+/* Signup Button */
+.signup-btn {
+  font-weight: 600 !important;
+  padding: 10px 25px !important;
+  border-radius: 25px !important;
+  background: #7556ff !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  white-space: nowrap !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.signup-btn:hover {
+  background: #5d43cc !important;
+  transform: scale(1.05) !important;
+}
+
+/* ================= Profile Icon ================= */
+.profile-icon-container {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-icon-container:hover {
+  transform: scale(1.1);
+  background: #7556ff;
+}
+
+.profile-icon {
+  font-size: 28px;
+  color: #7556ff;
+  transition: all 0.3s ease;
+}
+
+.profile-icon-container:hover .profile-icon {
+  color: white;
+}
+
+/* ================= Scrolled Profile Icon ================= */
+.header.scrolled .profile-icon-container {
+  background: #7556ff;
+}
+
+.header.scrolled .profile-icon {
+  color: white;
+}
+
+.header.scrolled .profile-icon-container:hover {
+  background: #5d43cc;
+}
+
+/* ================= Hamburger (Mobile) ================= */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  color: #7556ff;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* ================= Mobile Overlay ================= */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ================= Mobile Navigation Container ================= */
+.mobile-nav-container {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  height: 100vh;
+  background: #ffffff;
+  transition: right 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.mobile-nav-container.open {
+  right: 0;
+}
+
+/* ================= Mobile Close Button ================= */
+.mobile-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f5f5f5;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.mobile-close-btn:hover {
+  background: #7556ff;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* ================= Mobile Navigation Items ================= */
+.mobile-nav-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.mobile-nav-items li {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.mobile-nav-items li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.mobile-nav-items li a:hover {
+  color: #7556ff;
+  padding-left: 10px;
+}
+
+/* ================= Mobile Search ================= */
+.mobile-search-container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.mobile-search-box {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 30px;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+.mobile-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  padding: 0 10px;
+}
+
+.mobile-search-input::placeholder {
+  color: #888;
+}
+
+.mobile-search-icon {
+  color: #7556ff;
+  font-size: 18px;
+}
+
+/* ================= Mobile Auth Section ================= */
+.mobile-auth-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.mobile-login-btn,
+.mobile-signup-btn {
+  width: 100%;
+  padding: 16px 20px !important;
+  border-radius: 30px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.mobile-login-btn {
+  background: transparent !important;
+  color: #7556ff !important;
+  border: 2px solid #7556ff !important;
+}
+
+.mobile-login-btn:hover {
+  background: #7556ff !important;
+  color: white !important;
+}
+
+.mobile-signup-btn {
+  background: #7556ff !important;
+  color: white !important;
+}
+
+.mobile-signup-btn:hover {
+  background: #5d43cc !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ================= Mobile Profile Section ================= */
+.mobile-profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  cursor: pointer;
+}
+
+.mobile-profile-icon {
+  width: 50px;
+  height: 50px;
+  background: #7556ff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.mobile-profile-info {
+  flex: 1;
+}
+
+.mobile-profile-info h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.mobile-profile-info p {
+  margin: 5px 0 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+/* ================= TABLET + MOBILE ================= */
+/* ================= RESPONSIVE TABLET + MOBILE ================= */
+@media (max-width: 1200px) {
+
+  .nav,
+  .auth-section,
+  .search-container {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    color: #7556ff;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    width: 92%;
+    padding: 0 20px;
+    height: 60px;
+    border-radius: 30px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
+
+/* ================= SMALL MOBILE (480px) ================= */
+@media (max-width: 480px) {
+  .header {
+    width: 94%;
+    padding: 0 12px;
+    height: 58px;
+  }
+
+  .logo {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .hamburger {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .mobile-nav-container {
+    width: 90%;
+  }
+}
+
+/* ================= EXTRA SMALL MOBILE (360px) ================= */
+@media (max-width: 360px) {
+  .header {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .mobile-nav-container {
+    width: 95%;
+  }
+
+  .mobile-profile-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+/* ================= iOS Safari Fix ================= */
+@supports (-webkit-touch-callout: none) {
+  .mobile-nav-container {
+    height: -webkit-fill-available;
+  }
+}
+
+
+
+.mobile-right-icons {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Mobile only */
+@media (max-width: 1200px) {
+  .mobile-right-icons {
+    display: flex;
+  }
+
+  .mobile-profile-icon-top {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7556ff;
+    font-size: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+  }
+
+  .mobile-profile-icon-top:hover {
+    background: #7556ff;
+    color: white;
+  }
+}
+
+
+.mobile-profile-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  width: 220px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  z-index: 2000;
+}
+
+.mobile-profile-dropdown p {
+  padding: 12px 18px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.mobile-profile-dropdown p:hover {
+  background: #7556ff;
+  color: #fff;
+}
+
+
+.mobile-profile-dropdown {
+  position: fixed; /* 🔥 change from absolute */
+  top: 70px;
+  right: 20px;
+  z-index: 9999; /* 🔥 important */
+}
+
+
+.mobile-profile-icon-top {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  position: relative;
+}
+
+/* Make icon ignore pointer so parent handles click */
+.mobile-profile-icon-top svg {
+  pointer-events: none;
+  font-size: 26px;
+}

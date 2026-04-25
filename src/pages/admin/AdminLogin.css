@@ -1,0 +1,102 @@
+/* Full Page Background */
+.admin-login-wrapper {
+    padding-top: 50px;
+  height: 100vh;
+  background: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Container */
+.admin-login-container {
+  width: 90%;
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left Image */
+.admin-image-section img {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Right Section */
+.admin-form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* Login Card */
+.login-card {
+  background: #cfc8e8;
+  padding: 40px;
+  width: 350px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* margin-bottom: 25px; */
+}
+
+.brand-icon {
+  background: #6c5ce7;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.brand h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Button */
+.login-bttn {
+  width: 100%;
+  padding: 12px;
+  background: #d9d9d9;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #bdbdbd;
+}

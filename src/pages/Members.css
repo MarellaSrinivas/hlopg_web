@@ -1,0 +1,311 @@
+/* ===== PAGE CONTAINER ===== */
+.pg-members-page {
+  padding: 25px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== TOP BAR ===== */
+.members-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.members-top-bar h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ===== PG DROPDOWN ===== */
+.members-top-bar select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  font-size: 14px;
+  min-width: 200px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.members-top-bar select:hover {
+  border-color: #4f46e5;
+}
+
+.members-top-bar select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* ===== MONTH FILTER BUTTONS ===== */
+.month-filter {
+  display: flex;
+  gap: 10px;
+}
+
+.month-filter button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #e5e7eb;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+.month-filter button:hover {
+  background-color: #4f46e5;
+  color: white;
+}
+
+/* ===== TABLE WRAPPER ===== */
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== TABLE HEAD ===== */
+.members-table thead {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.members-table th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ===== TABLE BODY ===== */
+.members-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+  color: #444;
+}
+
+.members-table tr:hover {
+  background-color: #f9fafb;
+  transition: 0.2s ease;
+}
+
+/* ===== LOADING / EMPTY ===== */
+.pg-members-page p {
+  font-size: 15px;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .members-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .month-filter {
+    flex-wrap: wrap;
+  }
+
+  .members-table {
+    font-size: 13px;
+  }
+}
+
+.add-member-btn {
+
+  background: #2c3e50;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-member-btn:hover {
+  background: #1a252f;
+}
+
+.member-modal {
+  position: fixed;
+  top: 200px;
+  left: 400px;
+  width: 40%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 350px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.status-paid {
+  color: green;
+  font-weight: 600;
+}
+
+.status-unpaid {
+  color: red;
+  font-weight: 600;
+}
+
+
+.status-paid {
+  background: #22c55e;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.status-unpaid {
+  background: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.status-requested {
+  color: orange;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.status-vacated {
+  color: red;
+  font-weight: 600;
+}
+
+.approve-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.approve-btn:hover {
+  background: #218838;
+}
+
+
+.status-active {
+  color: green;
+  font-weight: 600;
+}
+
+.status-requested {
+  color: orange;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.status-vacated {
+  color: red;
+  font-weight: 600;
+}
+
+.approve-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.approve-btn:hover {
+  background: #218838;
+}
+
+
+.status-request-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-active {
+  color: green;
+  font-weight: 600;
+}
+
+.status-requested {
+  color: orange;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.status-vacated {
+  color: red;
+  font-weight: 600;
+}
+
+.approve-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.approve-btn:hover {
+  background: #218838;
+}
