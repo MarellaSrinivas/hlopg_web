@@ -36,7 +36,7 @@ const RoleSelection = () => {
 
   return (
     <div className="role-container">
-       <main style={{ paddingTop: "70px" }}>
+       <main>
         <Header />
       </main>
       <h2>Join as a User or Owner</h2>

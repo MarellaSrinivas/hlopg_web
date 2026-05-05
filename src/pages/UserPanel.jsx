@@ -117,7 +117,7 @@ const currentStay = stays.find((s) => {
   const navigate = useNavigate();
 
   // ✅ BACKEND URL (CHANGE IF NEEDED)
-  const BACKEND_URL = "http://192.168.88.15:8080";
+  const BACKEND_URL = "https://api.hlopg.com";
 
   // ✅ FIX IMAGE URL FUNCTION (IMPORTANT)
   const getFullImageUrl = (imagePath) => {
@@ -792,8 +792,9 @@ setComment("");
     localStorage.removeItem("hlopgToken");
     localStorage.removeItem("hlopgUser");
     localStorage.removeItem("hlopgOwner");
+    localStorage.removeItem("hlopgRole");
 
-    navigate("/");
+    navigate("/login");
     closeLogoutModal();
   };
 

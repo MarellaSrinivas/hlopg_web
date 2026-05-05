@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import "./AdminUsers.css";
+import api from "../../api";
+
 
 const USERS_PER_PAGE = 10;
 
@@ -28,8 +30,8 @@ const AdminUsers = () => {
     try {
       const token = localStorage.getItem("adminToken");
 
-      const response = await axios.get(
-        "http://192.168.88.10:8080/api/admin/users",
+      const response = await api.get(
+        "/admin/users",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -107,7 +109,7 @@ const AdminUsers = () => {
     const token = localStorage.getItem("adminToken");
 
     await axios.post(
-      "http://192.168.88.10:8080/api/admin/users",
+      "https://api.hlopg.com/api/admin/users",
       newUser,
       {
         headers: { Authorization: `Bearer ${token}` },

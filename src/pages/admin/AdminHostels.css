@@ -1,0 +1,105 @@
+/* ===== Container ===== */
+.admin-hostels-container {
+  padding: 20px;
+}
+
+/* ===== Count ===== */
+.hostels-count {
+  margin: 10px 0 20px;
+  font-size: 16px;
+}
+
+/* ===== Table ===== */
+.hostels-table {
+  width: 100%;
+}
+
+/* ===== Header ===== */
+.hostels-head {
+  display: grid;
+  grid-template-columns: 60px 1.5fr 1fr 1.2fr 1.2fr;
+  background: #f5f6fa;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* ===== Row ===== */
+.hostels-row {
+  display: grid;
+  grid-template-columns: 60px 1.5fr 1fr 1.2fr 1.2fr;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+/* Zebra */
+.hostels-row:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Columns */
+.owner-col {
+  font-weight: 500;
+}
+
+.phone-col {
+  font-weight: 500;
+  color: #2c3e50;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hostels-head,
+  .hostels-row {
+    grid-template-columns: 50px 1fr 1fr;
+  }
+
+  .owner-col,
+  .phone-col {
+    display: none;
+  }
+}
+
+
+/* Controls */
+.hostels-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.hostel-search {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.hostel-filter {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Pagination */
+.hostels-pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.hostels-pagination button {
+  padding: 6px 12px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.hostels-pagination .active-page {
+  background: #6c63ff;
+  color: #fff;
+}

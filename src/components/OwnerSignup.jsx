@@ -224,7 +224,7 @@ const verifyOTP = async (e) => {
       alert("✅ Registration successful! OTP verified. Please login to continue.");
       
       // ✅ Navigate to OwnerLogin page
-      navigate("/ownerlogin");
+      navigate("/login");
     } else {
       setOtpError(res.data.message || "Invalid OTP");
     }
@@ -258,15 +258,15 @@ const verifyWithGeneralEndpoint = async (enteredOTP) => {
           localStorage.setItem("hlopgOwner", JSON.stringify(owner));
           alert("✅ Registration successful! You are now logged in.");
           setShowOTPModal(false);
-          navigate("/ownerlogin");
+          navigate("/login");
         } else {
           alert("✅ Registration successful! Please login manually.");
-          navigate("/ownerlogin");
+          navigate("/login");
         }
       } catch (loginErr) {
         console.error("Auto-login failed:", loginErr);
         alert("✅ Registration successful! Please login.");
-        navigate("/ownerlogin");
+        navigate("/login");
       }
     } else {
       setOtpError(res.data.message || "Invalid OTP");
@@ -421,7 +421,7 @@ const verifyWithGeneralEndpoint = async (enteredOTP) => {
         </form>
 
         <p className="owner-login-link">
-          Already have an account? <Link to="/ownerlogin">Log in</Link>
+          Already have an account? <Link to="/login">Log in</Link>
         </p>
       </div>
 

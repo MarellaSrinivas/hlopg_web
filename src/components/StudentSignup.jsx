@@ -206,7 +206,7 @@ const StudentSignup = () => {
     if (res.data.success) {
       alert("✅ Registration successful! Please login.");
       setShowOTPModal(false);
-      navigate("/StudentLogin");
+      navigate("/login");
     } else {
       setOtpError(res.data.message || "OTP verification failed");
     }
@@ -374,7 +374,7 @@ const StudentSignup = () => {
         </form>
 
         <p className="student-login-link">
-          Already have an account? <Link to="/StudentLogin">Log in</Link>
+          Already have an account? <Link to="/login">Log in</Link>
         </p>
       </div>
       </div>

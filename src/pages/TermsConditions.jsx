@@ -13,7 +13,7 @@ function TermsConditions() {
       </p>
 
       <p>
-        This Platform (http://18.61.100.138:8080/) is owned and operated by HloPG,
+        This Platform (https://hlopg.com/) is owned and operated by HloPG,
         registered at:
       </p>
 

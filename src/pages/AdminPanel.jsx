@@ -435,10 +435,16 @@ const toggleNotifications = () => {
             className="logo-container"
             style={{ cursor: "pointer" }}
            >
-            <h2 className="logo">
+            {/* <h2 className="logo">
               <img src={Logo} alt="HloPG Logo" />
-            </h2>
-          </div>
+            </h2> */}
+                {/* <div className="admin-sidebar-logo">
+               <img  src={Logo} alt="HloPG Logo"  />
+               </div> */}
+               <h2 className="admin-h2logo">Hlopg</h2>
+           </div>
+
+          
 
           <ul className="admin-panel-sidebar-menu">
             {sidebarOptions.map((item) => (
@@ -557,8 +563,9 @@ const toggleNotifications = () => {
             localStorage.removeItem("hlopgToken");
             localStorage.removeItem("hlopgUser");
             localStorage.removeItem("hlopgOwner");
+            localStorage.removeItem("hlopgRole");
             setShowLogoutConfirm(false);
-            navigate("/");
+            navigate("/login");
           }}
         >
           Yes, Logout

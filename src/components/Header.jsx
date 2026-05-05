@@ -137,6 +137,16 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+
+  const handleLogout = () => {
+ 
+    localStorage.removeItem("hlopgToken");
+    localStorage.removeItem("hlopgUser");
+    localStorage.removeItem("hlopgOwner");
+
+    navigate("/login");
+   };
+
   return (
     <header
       className={`header ${scrolled ? "scrolled" : ""} ${
@@ -345,6 +355,7 @@ const Header = () => {
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "complaints" } })}>Complaints</p>
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "change-password" } })}>Change Password</p>
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "terms" } })}>Terms & Conditions</p>
+<p onClick={handleLogout}>Logout</p>
   </div>
 )}
     </header>

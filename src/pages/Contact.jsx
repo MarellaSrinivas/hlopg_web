@@ -16,7 +16,7 @@ const Contact = () => {
         <div className="social-icons">
           {/* Facebook */}
           <a
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/people/Hlopg/61588166692636/"
             target="_blank"
             rel="noopener noreferrer"
             className="facebook"
@@ -26,7 +26,7 @@ const Contact = () => {
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/hlopg._/"
             target="_blank"
             rel="noopener noreferrer"
             className="instagram"
@@ -36,7 +36,7 @@ const Contact = () => {
 
           {/* Twitter (X) */}
           <a
-            href="https://twitter.com/"
+            href="https://x.com/HloPg86229"
             target="_blank"
             rel="noopener noreferrer"
             className="twitter"

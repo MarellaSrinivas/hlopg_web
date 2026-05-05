@@ -2,8 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://192.168.88.17:8080/api",  
-    //baseURL: "https://api.hlopg.com/api",  
-
+//baseURL: "https://api.hlopg.com/api",  
   timeout: 15000,
   headers: {
     "Content-Type": "application/json",

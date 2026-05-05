@@ -6,14 +6,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        // target: "http://18.61.100.138:8080",
-        target: "http://localhost:8080",
+         target: "https://api.hlopg.com",
 
         changeOrigin: true,
         secure: true,
       },
       "/uploads": {
-        target: "http://localhost:8080",
+        target: "https://api.hlopg.com",
         changeOrigin: true,
         secure: true,
       },

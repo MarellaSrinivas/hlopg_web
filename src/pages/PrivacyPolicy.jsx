@@ -7,7 +7,7 @@ function PrivacyPolicy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        This Privacy Policy describes how HloPG (http://18.61.100.138:8080/)
+        This Privacy Policy describes how HloPG (https://hlopg.com/)
         collects, uses, shares and protects your personal data.
       </p>
 

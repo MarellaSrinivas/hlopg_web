@@ -222,10 +222,10 @@ const deleteUpdate = async (id) => {
             if (pg.images && pg.images.length > 0) {
               const img = pg.images[0];
               if (img.startsWith("http")) displayImage = img;
-              else if (img.startsWith("/")) displayImage = `http://18.61.100.138:8080${img}`;
-              else displayImage = `http://18.61.100.138:8080/uploads/${img}`;
+              else if (img.startsWith("/")) displayImage = `https://api.hlopg.com${img}`;
+              else displayImage = `https://api.hlopg.com/uploads/${img}`;
             } else if (pg.img) {
-              displayImage = pg.img.startsWith("http") ? pg.img : `http://18.61.100.138:8080${pg.img}`;
+              displayImage = pg.img.startsWith("http") ? pg.img : `https://api.hlopg.com${pg.img}`;
             }
 
             return {

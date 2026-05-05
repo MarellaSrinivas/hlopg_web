@@ -651,12 +651,25 @@
 
   /* Logo adjustments */
   .logo img {
-    margin: 0;
-    padding: 0;
-    width: 50px;
-    height: 50px;
+    margin-top: -20px;
+    padding: 0; 
+    max-width: 10px;
+     max-height: 10px;
   }
 
+  .admin-sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   }
+
+
+   .admin-sidebar-logo img {
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: -20px;
+   }
   /* Sidebar menu - becomes horizontal */
   .admin-panel-sidebar-menu {
     flex-direction: row;
@@ -1050,4 +1063,10 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+
+.admin-h2logo{
+  color:#5b5ff8;
+  padding-left:25px;
 }

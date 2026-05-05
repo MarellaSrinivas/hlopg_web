@@ -36,7 +36,7 @@ const cityImages = {
 };
 
 // ✅ Backend Base URL
-const BASE_URL = "http://18.61.100.138:8080";
+const BASE_URL = "https://hlopg.com"; 
 
 // ✅ Fixed Image URL Builder
 const getFullImageUrl = (imagePath) => {

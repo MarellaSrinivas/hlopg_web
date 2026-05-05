@@ -166,17 +166,17 @@ const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
               if (img.startsWith("http")) return img;
 
               if (img.startsWith("/uploads")) {
-                return `http://18.61.100.138:8080${img}`;
+                return `https://api.hlopg.com${img}`;
               }
 
-              return `http://18.61.100.138:8080/uploads/${img}`;
+              return `https://api.hlopg.com/uploads/${img}`;
             });
           } else if (data.img) {
             const mainImg = data.img.startsWith("http")
               ? data.img
               : data.img.startsWith("/uploads")
-              ? `http://18.61.100.138:8080${data.img}`
-              : `http://18.61.100.138:8080/${data.img}`;
+              ? `https://api.hlopg.com${data.img}`
+              : `https://api.hlopg.com/${data.img}`;
 
             data.images = [mainImg];
           } else {

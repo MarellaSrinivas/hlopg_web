@@ -28,35 +28,36 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
  
-  useEffect(() => {
-        const fetchDashboard = async () => {
- 
+ useEffect(() => {
+  const fetchDashboard = async () => {
+
     const token = localStorage.getItem("adminToken");
     if (!token) {
       navigate("/admin/login");
       return;
     }
- 
-   try {
-        const res = await api.get("/api/admin/dashboard-stats", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
- 
-        setStats(res.data);
-      } catch (error) {
-        console.error("Dashboard Error:", error);
- 
-        // If token expired or invalid → logout
-        if (error.response?.status === 401) {
-          localStorage.removeItem("adminToken");
-          localStorage.removeItem("adminData");
-          navigate("/admin/login");
-        }
+
+    try {
+      const res = await api.get("/admin/dashboard-stats", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setStats(res.data);
+    } catch (error) {
+      console.error("Dashboard Error:", error);
+
+      if (error.response?.status === 401) {
+        localStorage.removeItem("adminToken");
+        localStorage.removeItem("adminData");
+        navigate("/admin/login");
       }
-        }
-  }, [navigate]);
+    }
+  };
+
+  fetchDashboard();  
+}, [navigate]);
  
   const calculateGrowth = (today, week) => {
     const previous = week - today;
@@ -118,6 +119,27 @@ const AdminDashboard = () => {
             )}
           </div>
         </div>
+
+
+        {/* HOSTELS CARD */}
+<div className="card modern">
+  <h4>Total Registered Hostels</h4>
+  <h2>{stats?.totalHostels || 0}</h2>
+
+  {stats && (
+    <>
+      <p className="sub-info">
+        Today: {stats.todayHostels} | Week: {stats.weekHostels}
+      </p>
+      <span className={getGrowthClass(stats.todayHostels)}>
+        {calculateGrowth(
+          stats.todayHostels,
+          stats.weekHostels
+        )}% {stats.todayHostels > 0 ? "↑" : "↓"} this week
+      </span>
+    </>
+  )}
+</div>
  
         {/* ===== Revenue Chart ===== */}
         <div className="chart-section">

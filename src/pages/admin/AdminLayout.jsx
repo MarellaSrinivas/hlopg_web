@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { FaHome, FaUsers, FaUserTie, FaMoneyBill } from "react-icons/fa";
 import "./AdminLayout.css";
+import { FaBuilding } from "react-icons/fa";
  
 const AdminLayout = () => {
   const location = useLocation();
@@ -30,6 +31,13 @@ const AdminLayout = () => {
               <FaUserTie /> Owners
             </Link>
           </li>
+
+
+          <li className={location.pathname.includes("/admin/hostels") ? "active" : ""}>
+  <Link to="/admin/hostels">
+    <FaBuilding /> Hostels
+  </Link>
+</li>
  
           {/* <li>
             <Link to="/admin/payments">

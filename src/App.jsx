@@ -36,7 +36,9 @@ import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import ReturnPolicy from "./pages/ReturnPolicy";
-import BookingPage from "./pages/BookingPage"
+import BookingPage from "./pages/BookingPage";
+import ForgotPassword from "./pages/ForgotPassword";
+
 
 
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -44,6 +46,7 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminOwners from "./pages/admin/AdminOwners"
+import AdminHostels from "./pages/admin/AdminHostels";
 
 
 
@@ -167,6 +170,7 @@ useEffect(() => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/return-policy" element={<ReturnPolicy />} />
+            
             <Route
               path="/student-forgot-password"
               element={<StudentForgetPassword />}
@@ -178,6 +182,7 @@ useEffect(() => {
               element={<OwnerForgetPassword />}
             />
             <Route path="/login" element={<CommonLogin />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/user-dashboard" element={<UserProfile />} />
             <Route path="/booking/:hostelId" element={<BookingPage />} />
             <Route path="/verify-otp" element={<VerifyOTP />} />
@@ -188,6 +193,7 @@ useEffect(() => {
   <Route index element={<AdminDashboard />} />
   <Route path="users" element={<AdminUsers />} />
     <Route path="owners" element={<AdminOwners />} />
+  <Route path="hostels" element={<AdminHostels />} />
 
 </Route>
 

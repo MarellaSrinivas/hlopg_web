@@ -17,6 +17,8 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
+  height: 400px;
+
 }
 
 .home-pg-card::after {

@@ -138,12 +138,12 @@ const MyPGs = ({ user }) => {
             if (pg.images && Array.isArray(pg.images)) {
               images = pg.images.map(img => {
                 if (img.startsWith('http')) return img;
-                if (img.startsWith('/uploads')) return `http://18.61.100.138:8080${img}`;
-                if (img) return `http://18.61.100.138:8080/uploads/${img}`;
+                if (img.startsWith('/uploads')) return `https://api.hlopg.com${img}`;
+                if (img) return `https://api.hlopg.com/uploads/${img}`;
                 return pgDefaultImg;
               });
             } else if (pg.img) {
-              images = [pg.img.startsWith('http') ? pg.img : `http://18.61.100.138:8080${pg.img}`];
+              images = [pg.img.startsWith('http') ? pg.img : `https://api.hlopg.com${pg.img}`];
             } else {
               images = [pgDefaultImg];
             }
