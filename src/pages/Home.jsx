@@ -20,7 +20,7 @@
   import HostelCard from "../components/HostelCard";
   
   const PLAYSTORE_LINK = "https://play.google.com/store/apps/details?id=com.hlopgfront";
-  const APPSTORE_LINK = "https://www.apple.com/app-store/";
+  const APPSTORE_LINK = "https://apps.apple.com/in/app/hlopg/id6759896166";
 
   function Home() {
     const navigate = useNavigate();
@@ -31,12 +31,9 @@
     const [showAuthModal, setShowAuthModal] = useState(false);
     const [selectedHostelId, setSelectedHostelId] = useState(null);
     const [authType, setAuthType] = useState("login"); // "login" or "signup"
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [showSubscribePopup, setShowSubscribePopup] = useState(false);
-    const [forceUpdateFlag, setForceUpdateFlag] = useState(false);
+     const [forceUpdateFlag, setForceUpdateFlag] = useState(false);
   const forceUpdate = () => setForceUpdateFlag(!forceUpdateFlag);
-  const [popupClosedByUser, setPopupClosedByUser] = useState(false);
-  const [isSubLoading, setIsSubLoading] = useState(true);
+ 
   const [selectedType, setSelectedType] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
@@ -116,82 +113,10 @@
     { label: "Co-Living", icon: <FaUsers />, className: "coliving" }
   ];
   
+ 
 
-  useEffect(() => {
-    const isSub = getSubscriptionStatus();
-    setIsSubscribed(isSub);
-    setIsSubLoading(false); // ✅ important
-  }, []);
-  useEffect(() => {
-    const token = localStorage.getItem("hlopgToken");
-  const isSub = getSubscriptionStatus();
-
-    // Only for logged in & NOT subscribed
-  if (!token || isSubscribed) return;
-    // If user closed popup manually → reopen after 10 sec
-    if (popupClosedByUser) {
-      const timer = setTimeout(() => {
-        setShowSubscribePopup(true);
-        setPopupClosedByUser(false); // reset
-      }, 10000); // 10 sec
-
-      return () => clearTimeout(timer);
-    }
-
-  }, [popupClosedByUser, isSubscribed]);
-
-
-  useEffect(() => {
-    console.log("SUB STATUS:", isSubscribed);
-  }, [isSubscribed]);
-    /* ---------------- Fetch Liked Hostels ---------------- */
-    useEffect(() => {
-      const fetchLiked = async () => {
-        try {
-          const token = localStorage.getItem("hlopgToken");
-          if (!token) {
-            setLikedPgIds([]);
-            return;
-          }
-
-          const res = await api.get("/hostel/liked-hostels", {
-            headers: { Authorization: `Bearer ${token}` }
-          });
-          
-          if (res.data.success && Array.isArray(res.data.data)) {
-            const likedIds = res.data.data.map(pg => pg.hostel_id || pg.id);
-            setLikedPgIds(likedIds);
-          } else {
-            setLikedPgIds([]);
-          }
-        } catch (err) {
-          console.error("Error fetching liked hostels:", err);
-          setLikedPgIds([]);
-        }
-      };
-      fetchLiked();
-    }, []);
-
-  useEffect(() => {
-    if (isSubLoading) return; // ⛔ wait until subscription is known
-
-    const token = localStorage.getItem("hlopgToken");
-
-    if (!token) {
-      const timer = setTimeout(() => navigate("/login"), 2000);
-      return () => clearTimeout(timer);
-    }
-
-    if (!isSubscribed) {
-      const timer = setTimeout(() => {
-        setShowSubscribePopup(true);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-
-  }, [isSubscribed, isSubLoading, navigate]);
-
+ 
+ 
 
 
     /* ---------------- Cities ---------------- */
@@ -302,9 +227,9 @@
     }
   }, [hostels, filteredHostels]);
 
-  useEffect(() => {
-    handleSearch();
-  }, [selectedCity, selectedArea, selectedType]);
+useEffect(() => {
+  handleSearch();
+}, [selectedCity, selectedArea, selectedType, hostels]);
 
 
     /* ---------------- Helper: Get Sharing Display ---------------- */
@@ -561,112 +486,82 @@
 
 
   const handleSearch = () => {
-    let filtered = [...hostels];
+  let filtered = [...hostels];
 
-    // ✅ Filter by Type (Gender)
-    if (selectedType) {
-    filtered = filtered.filter(h => {
-      const type = (h.pg_type || "").toLowerCase().replace(/\s|-/g, "");
+  // ✅ Filter by Type (Gender)
+  if (selectedType) {
 
-      if (selectedType === "Men's") {
-        return type.includes("men") || type.includes("boys");
-      }
+    if (selectedType === "All") {
+      filtered = [...hostels];
+    }
 
-      if (selectedType === "Women's") {
-        return type.includes("women") || type.includes("girls");
-      }
+    else if (selectedType === "Men's") {
+      filtered = filtered.filter(
+        h => (h.pg_type || "").trim().toLowerCase() === "men"
+      );
+    }
 
-      if (selectedType === "Co-Living") {
-        return type.includes("coliving");
-      }
+    else if (selectedType === "Women's") {
+      filtered = filtered.filter(
+        h => (h.pg_type || "").trim().toLowerCase() === "women"
+      );
+    }
 
-      return true;
-    });
+    else if (selectedType === "Co-Living") {
+      filtered = filtered.filter(
+        h => (h.pg_type || "").trim().toLowerCase() === "co-living"
+      );
+    }
   }
-    // ✅ If City Selected
-    if (selectedCity) {
-      filtered = filtered.filter(h =>
-        (h.city || "").toLowerCase() === selectedCity.toLowerCase()
-      );
-    }
 
-    // ✅ If Area Selected (only if city exists)
-    if (selectedArea) {
-      filtered = filtered.filter(h =>
-        (h.area || "").toLowerCase() === selectedArea.toLowerCase()
-      );
-    }
+  // ✅ City Filter
+  if (selectedCity) {
+    filtered = filtered.filter(
+      h => (h.city || "").toLowerCase() === selectedCity.toLowerCase()
+    );
+  }
 
-    console.log("Filtered Hostels:", filtered);
-    setFilteredHostels(filtered);
-  };
+  // ✅ Area Filter
+  if (selectedArea) {
+    filtered = filtered.filter(
+      h => (h.area || "").toLowerCase() === selectedArea.toLowerCase()
+    );
+  }
+
+  console.log("Selected Type:", selectedType);
+  console.log("Filtered Hostels:", filtered);
+
+  setFilteredHostels(filtered);
+};
 
     /* ---------------- APP DOWNLOAD POPUP ---------------- */
     const [showPopup, setShowPopup] = useState(false);
     const scrollPosRef = useRef(0);
 
-    useEffect(() => {
+   useEffect(() => {
+  const popupShown = sessionStorage.getItem("appPopupShown");
 
-    const popupShown = sessionStorage.getItem("appPopupShown");
+  // If already shown in this session, don't show again
+  if (popupShown) return;
 
-    // ❌ If subscription popup already opened → don't show app popup
-    if (showSubscribePopup) return;
+  const timer = setTimeout(() => {
+    scrollPosRef.current = window.scrollY;
+    document.body.classList.add("no-scroll");
+    setShowPopup(true);
 
-    // ❌ If already shown in this session → don't show again
-    if (popupShown) return;
+    // Mark popup as shown
+    sessionStorage.setItem("appPopupShown", "true");
+  }, 5000);
 
-    const timer = setTimeout(() => {
-      scrollPosRef.current = window.scrollY;
-      document.body.classList.add("no-scroll");
-      setShowPopup(true);
-
-      // mark popup as shown
-      sessionStorage.setItem("appPopupShown", "true");
-
-    }, 5000);
-
-    return () => clearTimeout(timer);
-
-  }, [showSubscribePopup]);
+  return () => clearTimeout(timer);
+}, []);
 
     const closePopup = () => {
       setShowPopup(false);
       document.body.classList.remove("no-scroll");
       window.scrollTo(0, scrollPosRef.current);
     };
-  const getSubscriptionStatus = () => {
-    try {
-      const raw = localStorage.getItem("subscription");
-      if (!raw) return false;
-
-      const sub = JSON.parse(raw);
-
-      // ✅ Support multiple backend formats
-      const active = sub?.active ?? sub?.data?.active;
-      const expiryStr = sub?.expiry ?? sub?.data?.expiry;
-
-      // ❌ If not active → not subscribed
-      if (!active) return false;
-
-      // ❌ If expiry missing → treat as inactive (safe fallback)
-      if (!expiryStr) return false;
-
-      // ✅ Fix for MySQL zero date or invalid date
-      if (expiryStr.includes("0000-00-00")) return false;
-
-      const expiry = new Date(expiryStr);
-      const now = new Date();
-
-      // ❌ Invalid date check
-      if (isNaN(expiry.getTime())) return false;
-
-      return now < expiry;
-
-    } catch (error) {
-      console.error("Subscription parse error:", error);
-      return false;
-    }
-  };
+   
     const handlePgCardClick = (pg) => {
     const token = localStorage.getItem("hlopgToken");
     const role = localStorage.getItem("hlopgRole");
@@ -736,36 +631,7 @@
     setShowAuthModal(false);
   };
 
-
-  const activateFreeSubscription = async () => {
-    try {
-      const token = localStorage.getItem("hlopgToken");
-
-      const res = await api.post(
-        "/auth/activate-free-subscription",
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-
-      if (res.data.success) {
-        alert("🎉 Free 6 Month Subscription Activated!");
-
-        setIsSubscribed(true);
-
-        // ✅ FIXED
-  localStorage.setItem("subscription", JSON.stringify({
-    active: true,                         
-    expiry: res.data.expiry               
-  }));
-        setShowSubscribePopup(false);
-      }
-
-    } catch (err) {
-      console.error("Subscription activation error:", err);
-    }
-  };
+ 
     /* ---------------- Render ---------------- */
     return (
 
@@ -825,7 +691,13 @@
         className={`filter-tab ${type.className} ${
           selectedType === type.label ? "active" : ""
         }`}
-        onClick={() => setSelectedType(type.label)}
+        onClick={() => {
+  if (type.label === "All") {
+    setSelectedType("");   // remove filter
+  } else {
+    setSelectedType(type.label);
+  }
+}}
       >
         <span className="tab-icon">{type.icon}</span>
         {type.label}
@@ -940,8 +812,9 @@
                     pg={pg}
                     likedPgIds={likedPgIds}
                     toggleLike={toggleLike}
-                    isSubscribed={isSubscribed}
-                  />
+                      isSubscribed={true}
+
+                   />
                 </div>
               </div>
             ))}
@@ -955,7 +828,7 @@
     <div className="no-hostels-message">
       <p>
         No hostels found in{" "}
-        {city.name.match(/in (\w+)/i)?.[1] || "this city"}.
+        {city.name.match(/in (\w+)/i)?.[1] || "this city"}. Comming Soon
       </p>
     </div>
   )}
@@ -963,40 +836,7 @@
           );
         })}
 
-      {showSubscribePopup &&  !isSubscribed &&  (
-    <div className="subscribe-overlay">
-      <div className="subscribe-card">
-
-        <button
-          className="subscribe-close"
-        onClick={() => {
-    setShowSubscribePopup(false);
-    setPopupClosedByUser(true); // ✅ mark as manually closed
-  }}
-        >
-          ✕
-        </button>
-
-        <h2>🎁 Free Subscription</h2>
-
-        <p>
-          Unlock hostel location, facilities, ratings and price details.
-        </p>
-
-        <h3 style={{color:"#28a745"}}>
-          6 Months Free Access
-        </h3>
-
-        <button
-          className="subscribe-btn"
-          onClick={activateFreeSubscription}
-        >
-          Activate Free Subscription
-        </button>
-
-      </div>
-    </div>
-  )}
+      
 
         <AuthModal
           isOpen={showAuthModal}

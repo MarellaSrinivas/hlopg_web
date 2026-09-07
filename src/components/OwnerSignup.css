@@ -71,6 +71,28 @@
   font-size: 18px;
 }
 
+.password-toggle {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 18px;
+}
+
+.password-toggle:hover {
+  color: #4f46e5;
+}
+
+.password-tick {
+  right: 12px !important;
+}
+
+.input-with-status input {
+  padding-right: 70px;
+}
+
 /* Unified error block */
 .error-message {
   color: #e63946;
@@ -433,3 +455,4 @@
     font-size: 12px;
   }
 }
+

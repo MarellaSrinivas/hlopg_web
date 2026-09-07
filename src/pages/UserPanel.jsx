@@ -43,7 +43,23 @@ const [reviewText, setReviewText] = useState("");
 const [comment, setComment] = useState("");
 const [showComplaintModal, setShowComplaintModal] = useState(false);
 const [complaintText, setComplaintText] = useState("");
+const [showDeleteModal, setShowDeleteModal] =
+  useState(false);
 
+const [deletePhone, setDeletePhone] =
+  useState("");
+
+const [deleteOtp, setDeleteOtp] =
+  useState("");
+
+const [otpSent, setOtpSent] =
+  useState(false);
+
+const [deleteLoading, setDeleteLoading] =
+  useState(false);
+
+const [deleteError, setDeleteError] =
+  useState("");
 const [pgUpdates, setPgUpdates] = useState([]);
 const [loadingUpdates, setLoadingUpdates] = useState(false);
 
@@ -798,6 +814,77 @@ setComment("");
     closeLogoutModal();
   };
 
+  const handleSendDeleteOtp = async () => {
+  try {
+    setDeleteLoading(true);
+    setDeleteError("");
+
+    const token = localStorage.getItem("hlopgToken");
+
+    await api.post(
+      "/auth/send-delete-account-otp",
+      {
+        phone: deletePhone,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    setOtpSent(true);
+
+    alert("OTP sent successfully");
+  } catch (err) {
+    console.log(err.response?.data);
+
+    setDeleteError(
+      err.response?.message ||
+      "Failed to send OTP"
+    );
+  } finally {
+    setDeleteLoading(false);
+  }
+};
+
+const handleDeleteAccount = async () => {
+  try {
+    setDeleteLoading(true);
+    setDeleteError("");
+
+    const token = localStorage.getItem("hlopgToken");
+
+    await api.post(
+      "/auth/verify-delete-account",
+      {
+        phone: deletePhone,
+        otpCode: deleteOtp,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert("Account deleted successfully");
+
+    localStorage.clear();
+
+    navigate("/login");
+
+  } catch (err) {
+    console.log(err.response?.data);
+
+    setDeleteError(
+      err.response?.data?.message ||
+      "Delete failed"
+    );
+  } finally {
+    setDeleteLoading(false);
+  }
+};
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains("modal-overlay")) closeLogoutModal();
   };
@@ -870,6 +957,32 @@ setComment("");
     }
   };
 
+  const handleUnlike = async (hostelId, e) => {
+  e.stopPropagation();
+
+  try {
+    const token = localStorage.getItem("hlopgToken");
+
+    const res = await api.post(
+      "/hostel/like-hostel",
+      { hostel_id: hostelId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.data.success) {
+      setLikedHostels((prev) =>
+        prev.filter((hostel) => hostel.id !== hostelId)
+      );
+    }
+  } catch (err) {
+    console.error("Unlike failed:", err);
+  }
+};
+
   const renderSection = () => {
     switch (activeSection) {
       case "basic-info":
@@ -933,6 +1046,35 @@ setComment("");
           </>
         );
 
+
+        case "delete-account":
+  return (
+    <>
+      <h3>DELETE ACCOUNT</h3>
+
+      <div className="danger-zone">
+
+        <h4>Permanently Delete Account</h4>
+
+        <p>
+          This action permanently removes your
+          account, properties and all data.
+        </p>
+
+        <button
+          className="delete-account-btn"
+          onClick={() => {
+            setShowDeleteModal(true);
+            setDeleteError("");
+          }}
+        >
+          Delete My Account
+        </button>
+
+      </div>
+    </>
+  );
+
       case "liked-pg":
         return (
           <>
@@ -961,9 +1103,12 @@ setComment("");
                         }}
                       />
 
-                      <div className="liked-heart-btn liked-active">
-                        <FaHeart />
-                      </div>
+                      <div
+  className="liked-heart-btn liked-active"
+  onClick={(e) => handleUnlike(hostel.id, e)}
+>
+  <FaHeart />
+</div>
                     </div>
 
                     <div className="liked-pg-info">
@@ -1400,10 +1545,11 @@ case "notifications":
             { id: "basic-info", label: "Basic Information" },
             { id: "liked-pg", label: "Liked PG’s List" },
             { id: "payment-history", label: "Payment History" },
-              { id: "my-bookings", label: "My Bookings" },    
-          { id: "notifications", label: `Notifications` },
-          { id: "complaints", label: "Complaints" },
+            { id: "my-bookings", label: "My Bookings" },    
+            { id: "notifications", label: `Notifications` },
+            { id: "complaints", label: "Complaints" },
             { id: "change-password", label: "Change Password" },
+            { id: "delete-account", label: "Delete Account" },
             { id: "terms", label: "Terms and Conditions" },
           ].map((section) => (
             <button
@@ -1588,6 +1734,102 @@ case "notifications":
           Yes
         </button>
       </div>
+    </div>
+  </div>
+)}
+
+
+{showDeleteModal && (
+  <div className="modal-overlay">
+
+    <div className="modal delete-modal">
+
+      <button
+        className="modal-close"
+        onClick={() => {
+          setShowDeleteModal(false);
+          setOtpSent(false);
+          setDeletePhone("");
+          setDeleteOtp("");
+          setDeleteError("");
+        }}
+      >
+        <FaTimes />
+      </button>
+
+      <h3>Delete Account</h3>
+
+      <p className="delete-warning">
+        This action is permanent and cannot
+        be undone.
+      </p>
+
+      {!otpSent ? (
+        <>
+
+          <label>
+            Enter Registered Phone Number
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            value={deletePhone}
+            onChange={(e) =>
+              setDeletePhone(e.target.value)
+            }
+          />
+
+          <button
+            className="delete-btn"
+            onClick={handleSendDeleteOtp}
+            disabled={
+              deleteLoading ||
+              !deletePhone
+            }
+          >
+            {deleteLoading
+              ? "Sending..."
+              : "Send OTP"}
+          </button>
+
+        </>
+      ) : (
+        <>
+
+          <label>Enter OTP</label>
+
+          <input
+            type="text"
+            placeholder="Enter OTP"
+            value={deleteOtp}
+            onChange={(e) =>
+              setDeleteOtp(e.target.value)
+            }
+          />
+
+          <button
+            className="delete-btn"
+            onClick={handleDeleteAccount}
+            disabled={
+              deleteLoading ||
+              !deleteOtp
+            }
+          >
+            {deleteLoading
+              ? "Deleting..."
+              : "Verify & Delete"}
+          </button>
+
+        </>
+      )}
+
+      {deleteError && (
+        <p className="delete-error">
+          {deleteError}
+        </p>
+      )}
+
     </div>
   </div>
 )}

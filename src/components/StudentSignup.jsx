@@ -4,7 +4,7 @@ import "./StudentSignup.css";
 import Header from "./Header";
 import api from "../api.jsx";
 import Login from "../assets/students.jpeg";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const StudentSignup = () => {
@@ -31,7 +31,9 @@ const StudentSignup = () => {
   const [otpError, setOtpError] = useState("");
   const [apiError, setApiError] = useState(""); // API error display
 
-  
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
@@ -319,44 +321,64 @@ const StudentSignup = () => {
           </select>
 
           <div className="input-with-status">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className={
-                validFields.password
-                  ? "valid-input"
-                  : errors.password
-                  ? "invalid-input"
-                  : ""
-              }
-              required
-            />
-            {validFields.password && <span className="valid-tick">✓</span>}
-          </div>
+  <input
+    type={showPassword ? "text" : "password"}
+    name="password"
+    placeholder="Password"
+    value={formData.password}
+    onChange={handleChange}
+    className={
+      validFields.password
+        ? "valid-input"
+        : errors.password
+        ? "invalid-input"
+        : ""
+    }
+    required
+  />
+
+  <span
+    className="password-toggle"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+
+  {validFields.password && (
+    <span className="valid-tick password-tick">✓</span>
+  )}
+</div>
 
           <div className="input-with-status">
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className={
-                validFields.confirmPassword
-                  ? "valid-input"
-                  : errors.confirmPassword
-                  ? "invalid-input"
-                  : ""
-              }
-              required
-            />
-            {validFields.confirmPassword && (
-              <span className="valid-tick">✓</span>
-            )}
-          </div>
+  <input
+    type={showConfirmPassword ? "text" : "password"}
+    name="confirmPassword"
+    placeholder="Confirm Password"
+    value={formData.confirmPassword}
+    onChange={handleChange}
+    className={
+      validFields.confirmPassword
+        ? "valid-input"
+        : errors.confirmPassword
+        ? "invalid-input"
+        : ""
+    }
+    required
+  />
+
+  <span
+    className="password-toggle"
+    onClick={() =>
+      setShowConfirmPassword(!showConfirmPassword)
+    }
+  >
+    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+
+  {validFields.confirmPassword && (
+    <span className="valid-tick password-tick">✓</span>
+  )}
+</div>
 
           {Object.values(errors).some((msg) => msg) && (
             <div className="error-message">

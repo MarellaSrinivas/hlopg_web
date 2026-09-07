@@ -1660,3 +1660,58 @@ input.invalid {
     padding: 15px;
   }
 }
+
+
+
+.danger-zone {
+  background: #edebeb;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.delete-account-btn,
+.delete-btn {
+  background: #ff3b30;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.delete-account-btn:hover,
+.delete-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-modal {
+  width: 400px;
+  max-width: 90%;
+  min-height: 400px !important;
+}
+
+.delete-modal input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #333;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  background: #faf8f8;
+  color: rgb(14, 13, 13);
+}
+
+.delete-warning {
+  color: #ef0b0b;
+  margin-bottom: 20px;
+}
+
+.delete-error {
+  color: #ff4d4f;
+  margin-top: 15px;
+  font-size: 14px;
+}

@@ -665,11 +665,14 @@ setRecentComplaints(allComplaints);
 
 </div>
 
-            {/* {complaint.response && (
+            {
+            /* {complaint.response && (
               <p className="complaint-response">
                 <strong>Response:</strong> {complaint.response}
               </p>
-            )} */}
+            )} 
+              */
+            }
 
          
 

@@ -33,8 +33,7 @@ const typeClass = typeMap[pg.pg_type?.toLowerCase()] || "";
             }}
           />
 
-          {/* ❤️ LIKE */}
-          <FaHeart
+           <FaHeart
             className={`wishlists ${
               likedPgIds.includes(pg.id) ? "liked" : "unliked"
             }`}

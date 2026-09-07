@@ -17,7 +17,7 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
-  height: 400px;
+  height: 420px;
 
 }
 
@@ -612,11 +612,8 @@
 .pg-card:hover .pg-image img {
   transform: scale(1.1);
 }
-
-  
-
-/* Add to Home.css - New Card Styles */
-
+ 
+ 
 /* PG Type Badge */
 .pg-type-badge {
   display: flex;

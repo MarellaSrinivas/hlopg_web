@@ -628,11 +628,11 @@ const handleRemoveImage = (index) => {
   </div>
 
    <div className="advance-amount-section">
-          <h3 className="black-text">Advance Amount</h3>
+          <h3 className="black-text">Security  Deposit</h3>
           <div className="advance-input-group">
             <input 
               type="number"
-              placeholder="Enter advance amount"
+              placeholder="Enter security deposit amount"
               value={advanceAmount}
               onChange={(e) => setAdvanceAmount(e.target.value)}
             />

@@ -108,7 +108,7 @@ body {
 .password-field span {
   position: absolute;
   right: 12px;
-  top: 38%;
+  top: 23%;
   cursor: pointer;
   color: #888;
 }

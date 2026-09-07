@@ -354,6 +354,8 @@ const Header = () => {
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "notifications" } })}>Notifications</p>
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "complaints" } })}>Complaints</p>
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "change-password" } })}>Change Password</p>
+        <p onClick={() => navigate("/user-dashboard", { state: { openSection: "delete-account" } })}>Delete Account</p>
+
     <p onClick={() => navigate("/user-dashboard", { state: { openSection: "terms" } })}>Terms & Conditions</p>
 <p onClick={handleLogout}>Logout</p>
   </div>

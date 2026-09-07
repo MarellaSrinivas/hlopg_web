@@ -513,9 +513,7 @@ const toggleNotifications = () => {
   )}
 </div> */}
 
-          {/* Profile Section */}
-          {/* Profile Section - AdminPanel.jsx */}
-<div className="admin-panel-profile-section" ref={dropdownRef}>
+ <div className="admin-panel-profile-section" ref={dropdownRef}>
   <button 
     className="admin-panel-profile-icon-btn" 
     onClick={() => navigate("/owner-profile")}  

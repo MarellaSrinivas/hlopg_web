@@ -19,7 +19,6 @@ const PGRooms = ({ hostelId, onBack }) => {
   const [activeRoomIndex, setActiveRoomIndex] = useState(null);
   const [roomMembers, setRoomMembers] = useState({});
   const hasLoaded = useRef(false);
-
   const [setupData, setSetupData] = useState({
     floors: "",
     roomsPerFloor: "",

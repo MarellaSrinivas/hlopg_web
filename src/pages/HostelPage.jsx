@@ -78,8 +78,7 @@ const prevReview = () => {
   );
 };
 
-const [isSubscribed, setIsSubscribed] = useState(false);
-const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
+ 
   const [hostelData, setHostelData] = useState(null);
   const [foodMenu, setFoodMenu] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -231,35 +230,7 @@ const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
 
 }, [hostelId]);
   
-  // ================= FETCH USER SUBSCRIPTION =================
-
-
- useEffect(() => {
-  const checkSubscription = async () => {
-    try {
-      const token = localStorage.getItem("hlopgToken");
-      if (!token) return;
-
-      const res = await api.get("/auth/check-subscription", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-
-      console.log("Subscription response:", res.data);
-
-      if (res.data.success && res.data.active === true) {
-        setIsSubscribed(true);
-      } else {
-        setIsSubscribed(false);
-      }
-
-    } catch (err) {
-      console.error("Subscription check failed:", err);
-      setIsSubscribed(false);
-    }
-  };
-
-  checkSubscription();
-}, []);
+  
   // Fetch food menu
    useEffect(() => {
      const fetchFoodMenu = async () => {
@@ -277,7 +248,7 @@ const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
          console.log("🌐 Trying to fetch food menu from API...");
          
          const endpoints = [
-           `/food_menu/${hostelId}`,
+          //  `/food_menu/${hostelId}`,
            `/hostel/food_menu/${hostelId}`,
            `/hostel/${hostelId}/food_menu`,
            `/hostel/${hostelId}/menu`,
@@ -439,38 +410,7 @@ const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
   const nextImage = () =>
     setMainImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
-
-
-  const activateFreeSubscription = async () => {
-  try {
-    const token = localStorage.getItem("hlopgToken");
-
-    if (!token) {
-      navigate("/StudentLogin");
-      return;
-    }
-
-    const res = await api.post(
-      "/auth/activate-free-subscription",
-      {},
-      {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-    );
-
-    if (res.data.success) {
-      alert("🎉 Free 6 Months Subscription Activated!");
-
-      setIsSubscribed(true);
-      setShowSubscriptionPopup(false);
-    } else {
-      alert(res.data.message || "Subscription failed");
-    }
-
-  } catch (err) {
-    console.error("Subscription activation error:", err);
-  }
-};
+ 
   // ================= BOOK NOW BUTTON =================
  const handleBookNow = async () => {
   try {
@@ -721,9 +661,12 @@ const BookingPopup = ({ onClose, onSubmit }) => {
         </div>
 
         {/* RIGHT DETAILS */}
-<div className={`hostel-details ${!isSubscribed ? "blur-details" : ""}`}>
-            <h2 className="black-text">  {hostelData.hostel_name}</h2>
+<div className="hostel-details">
+              <h2 className="black-text">  {hostelData.hostel_name}</h2>
           <p className="black-text"> {hostelData.area}, {hostelData.city || ""}</p>
+          <p className="black-text">
+  <b>Hostel Unique ID:</b> {hostelData.hostel_id}
+</p>
           <p className="black-text">
             <b>Type of Living:</b> {hostelData.pg_type}'s PG
           </p>
@@ -902,14 +845,29 @@ const BookingPopup = ({ onClose, onSubmit }) => {
   )}
 </div>
 
+{/* SECURITY DEPOSIT */}
+<div className="security-deposit-box">
+  <div className="security-deposit-icon">
+    🛡️
+  </div>
+
+  <div className="security-deposit-content">
+    <span className="security-deposit-label">
+      Security Deposit
+    </span>
+
+    <span className="security-deposit-amount">
+      ₹ {hostelData.advance || 0}
+    </span>
+  </div>
+</div>
 
       {/* BOOK NOW BUTTON */}
       <div className="book-now">
         <button
   className="book-now-btn"
   onClick={handleBookNow}
-  disabled={!isSubscribed}
->
+ >
           Book Now
         </button>
         <p className="booking-note-small">
@@ -925,39 +883,7 @@ const BookingPopup = ({ onClose, onSubmit }) => {
         />
       )}
 
-
-   {showSubscriptionPopup && !isSubscribed && (
-  <div className="subscription-overlay">
-    <div className="subscription-popup">
-
-      {/* Close Button */}
-      <button
-        className="popup-close"
-        onClick={() => setShowSubscriptionPopup(false)}
-      >
-        ✕
-      </button>
-
-      <h2>🎁 Free Subscription</h2>
-
-      <p>
-        Unlock full PG details, location and booking access.
-      </p>
-
-      <h3 style={{ color: "#28a745" }}>
-        6 Months Free Access
-      </h3>
-
-      <button
-        className="subscribe-btn"
-        onClick={activateFreeSubscription}
-      >
-        Activate Free Subscription
-      </button>
-
-    </div>
-  </div>
-)}
+ 
     </div>
   );
 };

@@ -9,6 +9,7 @@ import login from "../assets/students.jpeg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
+
 const StudentLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();

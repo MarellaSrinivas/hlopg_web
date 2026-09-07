@@ -338,7 +338,8 @@ body.no-scroll {
 .first-city-section .know-more-btn{
     color: #ffffff;
  
-} */ */
+}
+     */ 
 
 .know-more-btn {
   /* background: #7556ff; */
@@ -409,7 +410,8 @@ body.no-scroll {
   transform: translateY(-14px) !important;
   z-index: 10;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18) !important;
-} */
+}
+   */
 
 /* ================= Image ================= */
 .home-pg-card .pg-image {
@@ -432,7 +434,8 @@ body.no-scroll {
 
 /* .home-pg-card:hover .pg-image img {
   transform: scale(1.05);
-} */
+} 
+  */
 
 .wishlists {
    position: absolute;

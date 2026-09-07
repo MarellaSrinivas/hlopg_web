@@ -191,7 +191,8 @@
 /* .stat-container {
   flex: 1;
   min-width: 150px;
-} */
+}
+   */
 
 /* .stat-btn {
   display: block;
@@ -206,7 +207,8 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-} */
+} 
+  */
 
 /* .stat-btn:hover {
   background: #7b4dff;
@@ -214,7 +216,8 @@
   border-color: #7b4dff;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(123, 77, 255, 0.2);
-} */
+}
+   */
 
 /* Sections Headers */
 .hostel-details h3 {
@@ -234,7 +237,8 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 25px;
-} */
+}
+   */
 
 /* ===== FOOD MENU ===== */
 .food-menu {
@@ -493,7 +497,8 @@
   .pg-rules {
     flex-direction: column; /* stack items vertically */
     /* gap: 8px; reduce gap for mobile */
-  /* } */ */
+  /* }
+   */  
 
 
   .book-now-btn {
@@ -652,7 +657,8 @@
 
 .popup-content::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8 !important;
-} */
+} 
+  */
 
 /* ===== FORM ELEMENTS ===== */
 .user-info-summary,
@@ -1391,4 +1397,43 @@
 
 .subscribe-btn:hover {
   background: #1f8a37;
+}
+
+.security-deposit-box {
+  margin: 20px 0;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.security-deposit-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ede9fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.security-deposit-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.security-deposit-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.security-deposit-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4f46e5;
 }
