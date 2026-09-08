@@ -55,6 +55,35 @@ const AdminHostels = () => {
     return filtered;
   }, [hostels, searchTerm, cityFilter]);
 
+
+  const handleHostelAction = async (hostelId, action) => {
+  try {
+    const token = localStorage.getItem("adminToken");
+
+    const res = await api.put(
+      `/admin/hostels/${hostelId}/${action}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert(res.data.message);
+
+    // Refresh hostel list
+    fetchHostels();
+
+  } catch (err) {
+    console.error(err);
+
+    alert(
+      err.response?.data?.message ||
+      "Failed to update hostel status"
+    );
+  }
+};
   // ✅ PAGINATION
   const totalPages = Math.ceil(filteredHostels.length / HOSTELS_PER_PAGE);
 
@@ -104,22 +133,147 @@ const AdminHostels = () => {
       {/* 📋 Table */}
       <div className="hostels-table">
         <div className="hostels-head">
-          <div>S.NO</div>
-          <div>Hostel</div>
-          <div>City</div>
-          <div>Owner</div>
-          <div>Phone</div>
+  <div>Hostel ID</div>
+  <div>Hostel Name</div>
+  <div>City</div>
+  <div>pgType</div>
+  <div>Status</div>
+  <div>Actions</div>
+ 
         </div>
 
-        {currentHostels.map((h, index) => (
-          <div className="hostels-row" key={h.hostelId}>
-            <div>{indexOfFirst + index + 1}</div>
-            <div>{h.hostelName}</div>
-            <div>{h.city}</div>
-            <div className="owner-col">{h.ownerName || "N/A"}</div>
-            <div className="phone-col">{h.ownerPhone || "N/A"}</div>
-          </div>
-        ))}
+       {currentHostels.map((h) => (
+  <div className="hostels-row" key={h.hostelId}>
+
+    <div>{h.hostelId}</div>
+
+    <div>{h.hostelName}</div>
+
+    <div>{h.city}</div>
+
+    <div className="owner-col">
+      {h.pgType || "N/A"}
+    </div>
+
+    {/* STATUS */}
+    <div className="owner-col">
+      {h.status || "N/A"}
+    </div>
+
+    {/* ACTIONS */}
+    <div className="hostel-actions">
+
+      {/* PENDING */}
+      {h.status === "PENDING" && (
+        <>
+          <button
+            className="approve-btn"
+            onClick={() =>
+              handleHostelAction(h.hostelId, "approve")
+            }
+          >
+            Approve
+          </button>
+
+          <button
+            className="reject-btn"
+            onClick={() => {
+              if (
+                window.confirm(
+                  `Reject hostel "${h.hostelName}"?`
+                )
+              ) {
+                handleHostelAction(h.hostelId, "reject");
+              }
+            }}
+          >
+            Reject
+          </button>
+        </>
+      )}
+
+      {/* ACTIVE */}
+      {h.status === "ACTIVE" && (
+        <>
+          <button
+            className="deactivate-btn"
+            onClick={() => {
+              if (
+                window.confirm(
+                  `Deactivate hostel "${h.hostelName}"?`
+                )
+              ) {
+                handleHostelAction(
+                  h.hostelId,
+                  "deactivate"
+                );
+              }
+            }}
+          >
+            Deactivate
+          </button>
+
+          <button
+            className="delete-btn"
+            onClick={() => {
+              if (
+                window.confirm(
+                  `Delete hostel "${h.hostelName}" permanently from active listings?`
+                )
+              ) {
+                handleHostelAction(
+                  h.hostelId,
+                  "delete"
+                );
+              }
+            }}
+          >
+            Delete
+          </button>
+        </>
+      )}
+
+      {/* DEACTIVATED */}
+      {h.status === "DEACTIVATED" && (
+        <button
+          className="activate-btn"
+          onClick={() =>
+            handleHostelAction(
+              h.hostelId,
+              "activate"
+            )
+          }
+        >
+          Activate
+        </button>
+      )}
+
+      {/* REJECTED */}
+      {h.status === "REJECTED" && (
+        <button
+          className="approve-btn"
+          onClick={() =>
+            handleHostelAction(
+              h.hostelId,
+              "approve"
+            )
+          }
+        >
+          Approve
+        </button>
+      )}
+
+      {/* DELETED */}
+      {h.status === "DELETED_BY_ADMIN" && (
+        <span className="no-action">
+          Deleted
+        </span>
+      )}
+
+    </div>
+
+  </div>
+))}
       </div>
 
       {/* 🔢 Pagination */}

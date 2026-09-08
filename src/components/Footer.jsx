@@ -222,7 +222,7 @@ const Footer = () => {
             <h4>Get the app</h4>
             <div className="store-buttons">
               <a
-                href="https://www.apple.com/in/app-store/"
+                href="https://apps.apple.com/in/app/hlopg/id6759896166"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="store-btn"
@@ -236,7 +236,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://play.google.com/store"
+                href="https://play.google.com/store/apps/details?id=com.hlopgfront"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="store-btn"

@@ -1,44 +1,91 @@
 /* ===== Container ===== */
+
 .admin-hostels-container {
   padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ===== Count ===== */
+
 .hostels-count {
   margin: 10px 0 20px;
   font-size: 16px;
 }
 
 /* ===== Table ===== */
+
 .hostels-table {
   width: 100%;
+  overflow-x: auto;
 }
 
 /* ===== Header ===== */
+
 .hostels-head {
   display: grid;
-  grid-template-columns: 60px 1.5fr 1fr 1.2fr 1.2fr;
+
+  /* 6 columns - MUST MATCH ROW */
+  grid-template-columns:
+    80px
+    minmax(220px, 2fr)
+    minmax(120px, 1fr)
+    minmax(100px, 1fr)
+    minmax(110px, 1fr)
+    minmax(220px, 1.5fr);
+
+  align-items: center;
+
   background: #f5f6fa;
-  padding: 12px;
+  padding: 12px 18px;
+
   font-weight: 600;
-  border-radius: 8px;
+  font-size: 16px;
+
+  border-radius: 8px 8px 0 0;
+
+  box-sizing: border-box;
 }
 
-/* ===== Row ===== */
+/* ===== Rows ===== */
+
 .hostels-row {
   display: grid;
-  grid-template-columns: 60px 1.5fr 1fr 1.2fr 1.2fr;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
+
+  /* EXACTLY SAME 6 COLUMNS AS HEADER */
+  grid-template-columns:
+    80px
+    minmax(220px, 2fr)
+    minmax(120px, 1fr)
+    minmax(100px, 1fr)
+    minmax(110px, 1fr)
+    minmax(220px, 1.5fr);
+
   align-items: center;
+
+  min-height: 72px;
+
+  padding: 12px 18px;
+
+  border-bottom: 1px solid #eee;
+
+  box-sizing: border-box;
+
+  column-gap: 10px;
 }
 
 /* Zebra */
+
 .hostels-row:nth-child(even) {
   background: #fafafa;
 }
 
-/* Columns */
+/* ===== Columns ===== */
+
+.hostels-row > div {
+  min-width: 0;
+}
+
 .owner-col {
   font-weight: 500;
 }
@@ -49,21 +96,147 @@
   white-space: nowrap;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hostels-head,
-  .hostels-row {
-    grid-template-columns: 50px 1fr 1fr;
-  }
+/* ===== Status ===== */
 
-  .owner-col,
-  .phone-col {
-    display: none;
-  }
+.status-badge {
+  display: inline-flex;
+  width: fit-content;
+
+  padding: 5px 10px;
+
+  border-radius: 15px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
 }
 
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
 
-/* Controls */
+.status-active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-deactivated {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.status-deleted_by_admin {
+  background: #343a40;
+  color: white;
+}
+
+/* ===== Actions ===== */
+
+.hostel-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 8px;
+
+  flex-wrap: nowrap;
+
+  min-width: 0;
+}
+
+/* All action buttons */
+
+.hostel-actions button {
+  border: none;
+
+  padding: 8px 12px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+/* ===== Approve ===== */
+
+.approve-btn {
+  background: #28a745;
+  color: white;
+}
+
+.approve-btn:hover {
+  background: #218838;
+}
+
+/* ===== Reject ===== */
+
+.reject-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.reject-btn:hover {
+  background: #c82333;
+}
+
+/* ===== Deactivate ===== */
+
+.deactivate-btn {
+  background: #f0ad4e;
+  color: white;
+}
+
+.deactivate-btn:hover {
+  background: #ec971f;
+}
+
+/* ===== Activate ===== */
+
+.activate-btn {
+  background: #28a745;
+  color: white;
+}
+
+.activate-btn:hover {
+  background: #218838;
+}
+
+/* ===== Delete ===== */
+
+.delete-btn {
+  background: #b91c1c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #991b1b;
+}
+
+/* ===== No Action ===== */
+
+.no-action {
+  color: #777;
+  font-size: 12px;
+}
+
+/* ===== Controls ===== */
+
 .hostels-controls {
   display: flex;
   gap: 10px;
@@ -72,34 +245,108 @@
 
 .hostel-search {
   flex: 1;
+
   padding: 8px;
+
   border: 1px solid #ddd;
+
   border-radius: 6px;
+
+  box-sizing: border-box;
 }
 
 .hostel-filter {
   padding: 8px;
+
   border: 1px solid #ddd;
+
   border-radius: 6px;
 }
 
-/* Pagination */
+/* ===== Pagination ===== */
+
 .hostels-pagination {
   margin-top: 20px;
+
   display: flex;
+
   gap: 8px;
+
   justify-content: center;
+
+  flex-wrap: wrap;
 }
 
 .hostels-pagination button {
   padding: 6px 12px;
+
   border: none;
+
   background: #eee;
+
   cursor: pointer;
+
   border-radius: 6px;
 }
 
 .hostels-pagination .active-page {
   background: #6c63ff;
+
   color: #fff;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .hostels-table {
+    overflow-x: auto;
+  }
+
+  .hostels-head,
+  .hostels-row {
+    min-width: 1000px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .admin-hostels-container {
+    padding: 10px;
+  }
+
+  .hostels-controls {
+    flex-direction: column;
+  }
+
+  .hostels-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /*
+     Keep the same 6-column structure.
+     User can horizontally scroll instead of
+     destroying table alignment.
+  */
+
+  .hostels-head,
+  .hostels-row {
+    min-width: 950px;
+  }
+
+  .hostels-head {
+    padding: 12px;
+  }
+
+  .hostels-row {
+    padding: 12px;
+  }
 }
